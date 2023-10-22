@@ -73,3 +73,8 @@ venv.bak/
 
 # Data
 raw_data/csv
+
+# Stanford parser library
+stanford-parser-full-2020-11-17/
+stanford-corenlp-4.5.5/
+Explainable_GEC/
