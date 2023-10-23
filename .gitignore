@@ -78,3 +78,6 @@ raw_data/csv
 stanford-parser-full-2020-11-17/
 stanford-corenlp-4.5.5/
 Explainable_GEC/
+cache_dir/
+runs/
+wandb/
