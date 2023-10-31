@@ -49,6 +49,7 @@ class Training_config:
 
         # type=str, default="bert-large-cased", help="if use a pretrained_model")
         self.model_name = "bert-large-cased"
+        self.model_name = "espejelomar/beto-base-cased"
 
         #  type=str, default='', help="path to save the evaluation results")
         self.eval_res_dir = ''
