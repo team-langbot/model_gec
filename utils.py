@@ -2,9 +2,18 @@ import argparse
 import importlib
 import datetime
 
+class DatasetFiles:
+    def __init__(self, train_csv, test_csv, dev_csv, train_ner, test_ner, dev_ner):
+        self.GEC_TRAIN_CSV = train_csv
+        self.GEC_TEST_CSV = test_csv
+        self.GEC_DEV_CSV = dev_csv
+        self.GEC_TRAIN_NER = train_ner
+        self.GEC_TEST_NER = test_ner
+        self.GEC_DEV_NER = dev_ner
 
 class Config:
     def __init__(self):
+        self.USE_SMALL_DATASET = True
         self.ESSAY_COL = 'essay'
         self.CORRECTED_COL = 'corrected'
         self.INPUT_COL = 'input_text'
@@ -14,13 +23,11 @@ class Config:
         self.STANFORD_PARSERS_FOLDER = './stanford-parser-full-2020-11-17'
         self.STANFORD_CORENLP_FOLDER = './stanford-corenlp-4.5.5'
         self.EXPLAINABLE_GEC_DATA_FOLDER = './Explainable_GEC/data/json'
-        self.GEC_TRAIN_CSV = 'bert_train.csv'
-        self.GEC_TEST_CSV = 'bert_test.csv'
-        self.GEC_DEV_CSV = 'bert_dev.csv'
-        self.GEC_TRAIN_NER = 'bert_train.pkl'
-        self.GEC_TEST_NER = 'bert_test.pkl'
-        self.GEC_DEV_NER = 'bert_dev.pkl'
-        
+
+        self.full_dataset = DatasetFiles('bert_train.csv', 'bert_test.csv', 'bert_dev.csv', 'bert_train.pkl', 'bert_test.pkl', 'bert_dev.pkl')
+
+        self.small_dataset = DatasetFiles('bert_train_small.csv', 'bert_test_small.csv', 'bert_dev_small.csv', 'bert_train_small.pkl', 'bert_test_small.pkl', 'bert_dev_small.pkl')
+
         # Config files to train and evaluate Labeling-based **Error+Correction** model
         self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
         self.EC_EVAL_CONFIG = 'cfgs/eval_error_correction.py'
@@ -31,13 +38,18 @@ class Config:
 
         # Config files to train and evaluate Labeling-based **Error+Correction+CE+Syntax** model
         self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce_syntax.py'
-        self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce_syntax.py'        
-        
+        self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce_syntax.py'
+
+    def training_dataset(self):
+        if self.USE_SMALL_DATASET:
+            return self.small_dataset
+        else:
+            return self.full_dataset
 
 class Training_config:
     def __init__(self, config_file):
-        self.use_cuda = False
-        
+        self.use_cuda = True
+
         # type=list, default=None, help="if is only inference and inference which data. Set None if is training", choices=[None, 'train', 'test', 'dev'])
         self.only_inference = None
 
@@ -70,7 +82,7 @@ class Training_config:
         self.exp_name = 'test'
 
         # type=str, default=None, help="name of the exp")
-        self.output_dir = None
+        self.output_dir = "outputs"
 
         # type=float, default=1e-5, help="learning rate")
         self.lr = 1e-5
@@ -100,7 +112,7 @@ class Training_config:
         self.debug = False
 
         # type=list, default=[], help="")
-        self.labels_list = [] 
+        self.labels_list = []
 
         # type=bool, default=False, help="")
         self.with_errant = False
@@ -121,7 +133,7 @@ class Training_config:
         self.parallel = False
 
         # type=int, default=256, help="max_seq_length of BERT")
-        self.max_seq_length = 256 
+        self.max_seq_length = 256
 
         # type=str, default='', help="pkl file for test")
         self.test_file = ''
@@ -214,3 +226,11 @@ class Training_config:
             "B-m7", "I-m7",
             "B-oth", "I-oth",
             "O", "C"] # "C" for correction
+
+        self.BIO_labels = [
+            "B-s1",  "I-s1",
+            "B-s2",  "I-s2",
+            "B-s3",  "I-s3",
+            "B-s5",  "I-s5",
+            "B-oth", "I-oth",
+            "O"] # "C" for correction
