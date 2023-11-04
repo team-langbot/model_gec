@@ -1,0 +1,6 @@
+pandas==1.4.2
+numpy
+boto3==1.28.57
+Flask==2.3.2
+torch==1.12.1
+simpletransformers==0.64.3
