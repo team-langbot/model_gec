@@ -1,3 +1,6 @@
+# Based on
+# https://github.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/pytorch_extending_our_containers/pytorch_extending_our_containers.ipynb
+
 ARG REGION=us-west-2
 
 # SageMaker PyTorch image for INFERENCE

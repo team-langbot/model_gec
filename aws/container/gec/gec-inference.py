@@ -9,6 +9,7 @@ JSON_CONTENT_TYPE = 'application/json'
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+logger.info(f"====================== Running stuff ============================")
 
 def model_fn(model_dir):
     logger.info(f"inside model_fn, model_dir= {model_dir}")
@@ -22,7 +23,9 @@ def model_fn(model_dir):
     model = None
     with open(model_loc, 'rb') as f:  # open a text file
         model = pickle.load(f) # serialize the list
-        model.to(device)
+        # TODO: How to add GPU support for inferencing? Looks like NER model does not have .to() method.
+        #       Also do we need GPU for inference?
+        # model.to(device)
 
     logging.info(f'GEC model loaded into device {device}')
     return model
