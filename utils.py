@@ -39,6 +39,12 @@ class Config:
         # Config files to train and evaluate Labeling-based **Error+Correction+CE+Syntax** model
         self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce_syntax.py'
         self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce_syntax.py'
+        self.CLASS_IDS = {
+            'article': 's1',
+            'gender agreement': 's2',
+            'gender and number agreement': 's3',
+            'number agreement': 's5',
+        }
 
     def training_dataset(self):
         if self.USE_SMALL_DATASET:
@@ -48,7 +54,7 @@ class Config:
 
 class Training_config:
     def __init__(self, config_file):
-        self.use_cuda = True
+        self.use_cuda = False
 
         # type=list, default=None, help="if is only inference and inference which data. Set None if is training", choices=[None, 'train', 'test', 'dev'])
         self.only_inference = None
@@ -232,5 +238,4 @@ class Training_config:
             "B-s2",  "I-s2",
             "B-s3",  "I-s3",
             "B-s5",  "I-s5",
-            "B-oth", "I-oth",
-            "O"] # "C" for correction
+            "O"]
