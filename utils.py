@@ -13,7 +13,7 @@ class DatasetFiles:
 
 class Config:
     def __init__(self):
-        self.USE_SMALL_DATASET = True
+        self.USE_SMALL_DATASET = False
         self.ESSAY_COL = 'essay'
         self.CORRECTED_COL = 'corrected'
         self.INPUT_COL = 'input_text'
@@ -27,6 +27,8 @@ class Config:
         self.full_dataset = DatasetFiles('bert_train.csv', 'bert_test.csv', 'bert_dev.csv', 'bert_train.pkl', 'bert_test.pkl', 'bert_dev.pkl')
 
         self.small_dataset = DatasetFiles('bert_train_small.csv', 'bert_test_small.csv', 'bert_dev_small.csv', 'bert_train_small.pkl', 'bert_test_small.pkl', 'bert_dev_small.pkl')
+
+        self.tiny_dataset = DatasetFiles('bert_train_tiny.csv', 'bert_test_tiny.csv', 'bert_dev_tiny.csv', 'bert_train_tiny.pkl', 'bert_test_tiny.pkl', 'bert_dev_tiny.pkl')
 
         # Config files to train and evaluate Labeling-based **Error+Correction** model
         self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
@@ -60,7 +62,7 @@ class Training_config:
         self.only_inference = None
 
         # type=str, default='bert', help="if use a pretrained_model")
-        self.model = 'bert'
+        self.model = 'auto'
 
         # type=str, default='interactive', help="if with syntax", choices=['interactive', 'noninteractive'])
         self.model_type = 'interactive'
