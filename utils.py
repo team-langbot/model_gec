@@ -243,3 +243,9 @@ class Training_config:
             "B-s3",  "I-s3",
             "B-s5",  "I-s5",
             "O"]
+
+        self.BIO_labels_2_class = [
+            "B-s2",  "I-s2",
+            "B-s5",  "I-s5",
+            "O"]
+        
