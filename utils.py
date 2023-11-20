@@ -77,7 +77,8 @@ class Training_config:
 
         # type=str, default="bert-large-cased", help="if use a pretrained_model")
         self.model_name = "bert-large-cased"
-        self.model_name = "espejelomar/beto-base-cased"
+        self.model_name = "bert-base-multilingual-cased" # mBert
+        self.model_name = "dccuchile/bert-base-spanish-wwm-uncased" #Original Beto
 
         #  type=str, default='', help="path to save the evaluation results")
         self.eval_res_dir = ''
@@ -254,4 +255,3 @@ class Training_config:
             "B-ga",  "I-ga",
             "B-na",  "I-na",
             "O"]
-        

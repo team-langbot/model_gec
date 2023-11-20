@@ -34,11 +34,11 @@ from ner.ner_utils import (
 from transformers import DummyObject, requires_backends
 
 
-class NystromformerTokenizer(metaclass=DummyObject):
-    _backends = ["sentencepiece"]
+# class NystromformerTokenizer(metaclass=DummyObject):
+#     _backends = ["sentencepiece"]
 
-    def __init__(self, *args, **kwargs):
-        requires_backends(self, ["sentencepiece"])
+#     def __init__(self, *args, **kwargs):
+#         requires_backends(self, ["sentencepiece"])
 
 
 from torch.utils.tensorboard import SummaryWriter
