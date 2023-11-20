@@ -49,6 +49,12 @@ class Config:
             'gender and number agreement': 's3',
             'number agreement': 's5',
         }
+        self.CLASS_IDS = {
+            'article': 'a',
+            'gender agreement': 'ga',
+            'gender and number agreement': 'gna',
+            'number agreement': 'na',
+        }
 
     def training_dataset(self):
         if self.USE_SMALL_DATASET:
@@ -238,14 +244,14 @@ class Training_config:
             "O", "C"] # "C" for correction
 
         self.BIO_labels = [
-            "B-s1",  "I-s1",
-            "B-s2",  "I-s2",
-            "B-s3",  "I-s3",
-            "B-s5",  "I-s5",
+            "B-a",  "I-a",
+            "B-ga",  "I-ga",
+            "B-gna",  "I-gna",
+            "B-na",  "I-na",
             "O"]
 
         self.BIO_labels_2_class = [
-            "B-s2",  "I-s2",
-            "B-s5",  "I-s5",
+            "B-ga",  "I-ga",
+            "B-na",  "I-na",
             "O"]
         
