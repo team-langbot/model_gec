@@ -14,7 +14,7 @@ config = {
     "model": 'bert',
     "model_name": "dccuchile/bert-base-spanish-wwm-uncased", #Original Beto
     "exp_name": "beto_cows_l2h_two_classes",
-    "BIO_labels": [
+    "labels_list": [
             "B-ga",
             "I-ga",
             "B-na",

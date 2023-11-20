@@ -14,7 +14,7 @@ config = {
     "model": 'bert',
     "model_name": "bert-base-multilingual-cased", #Original Beto
     "exp_name": "mbert_cows_l2h_two_classes",
-    "BIO_labels": [
+    "labels_list": [
             "B-ga",
             "I-ga",
             "B-na",

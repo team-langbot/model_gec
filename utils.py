@@ -59,7 +59,7 @@ class Config:
 
 class Training_config:
     def __init__(self, config_file):
-        self.use_cuda = False
+        self.use_cuda = True
 
         # type=list, default=None, help="if is only inference and inference which data. Set None if is training", choices=[None, 'train', 'test', 'dev'])
         self.only_inference = None
@@ -215,14 +215,16 @@ class Training_config:
         config = importlib.import_module(config_path).config
         # time_str = datetime.now().strftime('%Y%m%d-%H%M%S')
 
-        # update based on the config
-        for k, v in config.items():
-            if k not in ['custom']:
-                setattr(self, k, v)
-
-        self.BIO_labels = [
+        self.labels_list = [
             "B-a",  "I-a",
             "B-ga",  "I-ga",
             "B-gna",  "I-gna",
             "B-na",  "I-na",
             "O"]
+
+        # update based on the config
+        # Should be last step in loading the config
+        for k, v in config.items():
+            if k not in ['custom']:
+                setattr(self, k, v)
+
