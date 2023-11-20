@@ -32,23 +32,18 @@ class Config:
 
         self.two_classed_dataset = DatasetFiles('bert_train_two_classed.csv', 'bert_test_two_classed.csv', 'bert_dev_two_classed.csv', 'bert_train_two_classed.pkl', 'bert_test_two_classed.pkl', 'bert_dev_two_classed.pkl')
 
-        # Config files to train and evaluate Labeling-based **Error+Correction** model
-        self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
-        self.EC_EVAL_CONFIG = 'cfgs/eval_error_correction.py'
+        # # Config files to train and evaluate Labeling-based **Error+Correction** model
+        # self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
+        # self.EC_EVAL_CONFIG = 'cfgs/eval_error_correction.py'
 
-        # Config files to train and evaluate Labeling-based **Error+Correction+CE** model
-        self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce.py'
-        self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce.py'
+        # # Config files to train and evaluate Labeling-based **Error+Correction+CE** model
+        # self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce.py'
+        # self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce.py'
 
-        # Config files to train and evaluate Labeling-based **Error+Correction+CE+Syntax** model
-        self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce_syntax.py'
-        self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce_syntax.py'
-        self.CLASS_IDS = {
-            'article': 's1',
-            'gender agreement': 's2',
-            'gender and number agreement': 's3',
-            'number agreement': 's5',
-        }
+        # # Config files to train and evaluate Labeling-based **Error+Correction+CE+Syntax** model
+        # self.ECC_TRAIN_CONFIG = 'cfgs/train_error_correction_ce_syntax.py'
+        # self.ECC_EVAL_CONFIG = 'cfgs/eval_error_correction_ce_syntax.py'
+
         self.CLASS_IDS = {
             'article': 'a',
             'gender agreement': 'ga',
@@ -226,32 +221,8 @@ class Training_config:
                 setattr(self, k, v)
 
         self.BIO_labels = [
-            "B-s1",  "I-s1",
-            "B-s2",  "I-s2",
-            "B-s3",  "I-s3",
-            "B-s5",  "I-s5",
-            "B-s6",  "I-s6",
-            "B-s7", "I-s7",
-            "B-s8", "I-s8",
-            "B-s9", "I-s9",
-            "B-m1", "I-m1",
-            "B-m2", "I-m2",
-            "B-m3", "I-m3",
-            "B-m4", "I-m4",
-            "B-m5", "I-m5",
-            "B-m6", "I-m6",
-            "B-m7", "I-m7",
-            "B-oth", "I-oth",
-            "O", "C"] # "C" for correction
-
-        self.BIO_labels = [
             "B-a",  "I-a",
             "B-ga",  "I-ga",
             "B-gna",  "I-gna",
-            "B-na",  "I-na",
-            "O"]
-
-        self.BIO_labels_2_class = [
-            "B-ga",  "I-ga",
             "B-na",  "I-na",
             "O"]
