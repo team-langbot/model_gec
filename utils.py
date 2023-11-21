@@ -32,6 +32,8 @@ class Config:
 
         self.two_classed_dataset = DatasetFiles('bert_train_two_classed.csv', 'bert_test_two_classed.csv', 'bert_dev_two_classed.csv', 'bert_train_two_classed.pkl', 'bert_test_two_classed.pkl', 'bert_dev_two_classed.pkl')
 
+        self.two_classed_plain_dataset = DatasetFiles('bert_train_two_classed_plain.csv', 'bert_test_two_classed_plain.csv', 'bert_dev_two_classed_plain.csv', 'bert_train_two_classed_plain.pkl', 'bert_test_two_classed_plain.pkl', 'bert_dev_two_classed_plain.pkl')
+
         # # Config files to train and evaluate Labeling-based **Error+Correction** model
         # self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
         # self.EC_EVAL_CONFIG = 'cfgs/eval_error_correction.py'
