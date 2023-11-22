@@ -45,24 +45,24 @@ class Config:
         self.two_classed_plain_dataset = DatasetFiles('bert_train_two_classed_plain.csv', 'bert_test_two_classed_plain.csv', 'bert_dev_two_classed_plain.csv', 'bert_train_two_classed_plain.pkl', 'bert_test_two_classed_plain.pkl', 'bert_dev_two_classed_plain.pkl')
 
         self.bert_plain_models = [
-            PlainBertConfig(
-                name='beto',
-                exp_name='beto/plain',
-                model_name='dccuchile/bert-base-spanish-wwm-uncased',
-                train_data_file='beto_plain_two_class_train_data.pkl',
-                train_intermediate_file=self.two_classed_plain_dataset.GEC_TRAIN_CSV,
-                dev_intermediate_file=self.two_classed_plain_dataset.GEC_DEV_CSV,
-                max_length=30
-            ),
-            PlainBertConfig(
-                name='mbert',
-                exp_name='mbert/plain',
-                model_name='bert-base-multilingual-cased',
-                train_data_file='mbert_plain_two_class_train_data.pkl',
-                train_intermediate_file=self.two_classed_plain_dataset.GEC_TRAIN_CSV,
-                dev_intermediate_file=self.two_classed_plain_dataset.GEC_DEV_CSV,
-                max_length=30
-            ),
+            {
+                'name':'beto',
+                'exp_name':'beto/plain',
+                'model_name':'dccuchile/bert-base-spanish-wwm-uncased',
+                'train_data_file': 'beto_plain_two_class_train_data.pkl',
+                'train_intermediate_file': self.two_classed_plain_dataset.GEC_TRAIN_CSV,
+                'dev_intermediate_file': self.two_classed_plain_dataset.GEC_DEV_CSV,
+                'max_length': 30
+            },
+            {
+                'name':'mbert',
+                'exp_name':'mbert/plain',
+                'model_name':'bert-base-multilingual-cased',
+                'train_data_file':'mbert_plain_two_class_train_data.pkl',
+                'train_intermediate_file':self.two_classed_plain_dataset.GEC_TRAIN_CSV,
+                'dev_intermediate_file':self.two_classed_plain_dataset.GEC_DEV_CSV,
+                'max_length':30
+            },
             # {
             #     'name': 'bert_base',
             #     'model_name':'bert-base-cased',
