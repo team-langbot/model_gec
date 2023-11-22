@@ -2,6 +2,16 @@ import argparse
 import importlib
 import datetime
 
+class PlainBertConfig:
+    def __init__(self, name, model_name, exp_name, train_data_file, train_intermediate_file, dev_intermediate_file, max_length):
+        self.name = name
+        self.exp_name = exp_name
+        self.model_name = model_name
+        self.train_data_file = train_data_file
+        self.train_intermediate_file = train_intermediate_file
+        self.dev_intermediate_file = dev_intermediate_file
+        self.max_length = max_length
+
 class DatasetFiles:
     def __init__(self, train_csv, test_csv, dev_csv, train_ner, test_ner, dev_ner):
         self.GEC_TRAIN_CSV = train_csv
@@ -33,6 +43,35 @@ class Config:
         self.two_classed_dataset = DatasetFiles('bert_train_two_classed.csv', 'bert_test_two_classed.csv', 'bert_dev_two_classed.csv', 'bert_train_two_classed.pkl', 'bert_test_two_classed.pkl', 'bert_dev_two_classed.pkl')
 
         self.two_classed_plain_dataset = DatasetFiles('bert_train_two_classed_plain.csv', 'bert_test_two_classed_plain.csv', 'bert_dev_two_classed_plain.csv', 'bert_train_two_classed_plain.pkl', 'bert_test_two_classed_plain.pkl', 'bert_dev_two_classed_plain.pkl')
+
+        self.bert_plain_models = [
+            PlainBertConfig(
+                name='beto',
+                exp_name='beto/plain',
+                model_name='dccuchile/bert-base-spanish-wwm-uncased',
+                train_data_file='beto_plain_two_class_train_data.pkl',
+                train_intermediate_file=self.two_classed_plain_dataset.GEC_TRAIN_CSV,
+                dev_intermediate_file=self.two_classed_plain_dataset.GEC_DEV_CSV,
+                max_length=30
+            ),
+            PlainBertConfig(
+                name='mbert',
+                exp_name='mbert/plain',
+                model_name='bert-base-multilingual-cased',
+                train_data_file='mbert_plain_two_class_train_data.pkl',
+                train_intermediate_file=self.two_classed_plain_dataset.GEC_TRAIN_CSV,
+                dev_intermediate_file=self.two_classed_plain_dataset.GEC_DEV_CSV,
+                max_length=30
+            ),
+            # {
+            #     'name': 'bert_base',
+            #     'model_name':'bert-base-cased',
+            #     'train_data_file': 'bert_base_plain_two_class_train_data.pkl',
+            #     'train_intermediate_file': self.two_classed_plain_dataset.GEC_TRAIN_CSV,
+            #     'dev_intermediate_file': self.two_classed_plain_dataset.GEC_DEV_CSV,
+            #     'max_length':30
+            # }
+        ]
 
         # # Config files to train and evaluate Labeling-based **Error+Correction** model
         # self.EC_TRAIN_CONFIG = 'cfgs/train_error_correction.py'
