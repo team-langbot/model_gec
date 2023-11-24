@@ -52,7 +52,8 @@ class Config:
                 'train_data_file': 'beto_plain_two_class_train_data.pkl',
                 'train_intermediate_file': self.two_classed_plain_dataset.GEC_TRAIN_CSV,
                 'dev_intermediate_file': self.two_classed_plain_dataset.GEC_DEV_CSV,
-                'max_length': 30
+                'test_intermediate_file': self.two_classed_plain_dataset.GEC_TEST_CSV,
+                'max_length': 40
             },
             {
                 'name':'mbert',
@@ -61,6 +62,7 @@ class Config:
                 'train_data_file':'mbert_plain_two_class_train_data.pkl',
                 'train_intermediate_file':self.two_classed_plain_dataset.GEC_TRAIN_CSV,
                 'dev_intermediate_file':self.two_classed_plain_dataset.GEC_DEV_CSV,
+                'test_intermediate_file':self.two_classed_plain_dataset.GEC_TEST_CSV,
                 'max_length':30
             },
             # {
