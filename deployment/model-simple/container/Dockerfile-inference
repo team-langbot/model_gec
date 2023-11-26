@@ -1,0 +1,26 @@
+# Based on
+# https://github.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/pytorch_extending_our_containers/pytorch_extending_our_containers.ipynb
+
+ARG REGION=us-west-2
+
+# SageMaker TF image for INFERENCE
+FROM 763104351884.dkr.ecr.$REGION.amazonaws.com/tensorflow-inference:2.12.1-gpu-py310-cu118-ubuntu20.04-sagemaker
+
+ENV PATH="/opt/ml/code:${PATH}"
+
+# /opt/ml and all subdirectories are utilized by SageMaker, we use the /code subdirectory to store our user code.
+COPY /gec /opt/ml/code
+
+# this environment variable is used by the SageMaker TensorFlow container to determine our user code directory.
+ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
+
+# this environment variable is used by the SageMaker Tensorflow container to determine our program entry point
+# for training and serving.
+# For more information: https://github.com/aws/sagemaker-tensorflow-training-toolkit
+ENV SAGEMAKER_PROGRAM gec-simple-inference.py
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir numba==0.53.1 protobuf==3.20.* && \
+    pip install --no-cache-dir nvgpu smdebug transformers sentencepiece seqeval
+
+RUN pip freeze
