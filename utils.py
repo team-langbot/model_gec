@@ -1,6 +1,4 @@
-import argparse
 import importlib
-import datetime
 
 class PlainBertConfig:
     def __init__(self, name, model_name, exp_name, train_data_file, train_intermediate_file, dev_intermediate_file, max_length):
