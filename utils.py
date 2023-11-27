@@ -93,6 +93,12 @@ class Config:
             'gender and number agreement': 'gna',
             'number agreement': 'na',
         }
+        
+        self.SIMPLE_MODEL_RUNS = {
+            'kr8c3wml': 'langbot/langbot_gec_plain_top_performers/kr8c3wml',
+            'hz4wgq4r': 'langbot/langbot_gec_plain_top_performers/hz4wgq4r',
+            '3emhdbgu': 'langbot/langbot_gec_plain_top_performers/3emhdbgu'
+        }
 
     def training_dataset(self):
         if self.USE_SMALL_DATASET:

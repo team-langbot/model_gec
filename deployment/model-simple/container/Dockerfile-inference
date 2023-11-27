@@ -1,5 +1,5 @@
 # Based on
-# https://github.com/awslabs/amazon-sagemaker-examples/master/advanced_functionality/pytorch_extending_our_containers/pytorch_extending_our_containers.ipynb
+# https://github.com/aws/amazon-sagemaker-examples/blob/main/advanced_functionality/tensorflow_iris_byom/tensorflow_BYOM_iris.ipynb
 
 ARG REGION=us-west-2
 
@@ -20,7 +20,7 @@ ENV SAGEMAKER_SUBMIT_DIRECTORY /opt/ml/code
 ENV SAGEMAKER_PROGRAM gec-simple-inference.py
 
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir numba==0.53.1 protobuf==3.20.* && \
-    pip install --no-cache-dir nvgpu smdebug transformers sentencepiece seqeval
+    pip install --no-cache-dir protobuf==3.20.* && \
+    pip install --no-cache-dir nvgpu smdebug transformers numba sentencepiece seqeval wandb sagemaker-ssh-helper
 
 RUN pip freeze
