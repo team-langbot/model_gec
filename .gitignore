@@ -83,3 +83,4 @@ runs/
 wandb/
 outputs/
 temp/
+artifacts/
