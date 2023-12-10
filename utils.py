@@ -90,6 +90,7 @@ class Config:
             'gender agreement': 'ga',
             'gender and number agreement': 'gna',
             'number agreement': 'na',
+            'evidence word': 'ew'
         }
         
         self.SIMPLE_MODEL_RUNS = {
@@ -98,6 +99,15 @@ class Config:
             '3emhdbgu': 'langbot/langbot_gec_plain_top_performers/3emhdbgu'
         }
 
+        self.label_list = [
+            "B-ga",
+            "B-na",
+            "B-ew",
+            "O"]
+
+        self.id2label = dict(enumerate(self.label_list))
+        self.label2id = dict([(v,k) for (k,v) in self.id2label.items()])
+        
     def training_dataset(self):
         if self.USE_SMALL_DATASET:
             return self.small_dataset
@@ -267,7 +277,11 @@ class Training_config:
             "B-ga",  "I-ga",
             "B-gna",  "I-gna",
             "B-na",  "I-na",
+            "B-ew", "I-ew",
             "O"]
+
+        self.id2label = {0: 'B-ga', 1: 'B-na', 2: 'O', 3: 'B-ew'}
+        self.label2id = {'B-ga': 0, 'B-na': 1, 'O': 2, 'B-ew': 3}
 
         # update based on the config
         # Should be last step in loading the config
